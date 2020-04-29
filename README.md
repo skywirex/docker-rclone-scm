@@ -1,4 +1,6 @@
-# docker-rclone
+# docker-rclone-scm
+
+This repo is cloned from https://github.com/pfidr34/docker-rclone.git
 
 Docker image to perform a [rclone](http://rclone.org) sync based on a cron schedule, with [healthchecks.io](https://healthchecks.io) monitoring.
 
@@ -69,6 +71,8 @@ See [rclone sync docs](https://rclone.org/commands/rclone_sync/) for source/dest
 
 ## Changelog
 
++ **02/01/2020:**
+  * Add parameter `--min-age 1m` to rclone command
 + **02/01/2020:**
   * Update to latest Rclone (v1.51.0)
 + **11/20/2019:**
