@@ -37,6 +37,29 @@ $ mkdir config
 $ docker run --rm -it -v $(pwd)/config:/config pfidr/rclone
 ```
 
+### Snippets code 
+
+```
+docker create \
+ --name=rclone-scm \
+ -it \
+ -v ~/.config/rclone:/config \
+ -v ~/backup:/source \
+ -e RCLONE_CMD="move" \
+ -e SYNC_SRC="/source" \
+ -e SYNC_DEST="gdrive-datacrypt:z-rclone" \
+ -e TZ="Asia/Ho_Chi_Minh" \
+ -e CRON="*/30 * * * *" \
+ -e FORCE_SYNC=1 \
+ -e CHECK_URL=https://hc-ping.com/6e5c1161-67a3-4c1c-8bb1-xxxxxxxxxx \
+ --restart=unless-stopped \
+skywirex/rclone-scm:v0.1-arm64v8-latest
+```
+
+```
+docker start rclone-scm
+```
+
 ### Perform sync in a daily basis
 
 A few environment variables allow you to customize the behavior of rclone:
@@ -71,7 +94,7 @@ See [rclone sync docs](https://rclone.org/commands/rclone_sync/) for source/dest
 
 ## Changelog
 
-+ **02/01/2020:**
++ **04/29/2020:**
   * Add parameter `--min-age 1m` to rclone command
 + **02/01/2020:**
   * Update to latest Rclone (v1.51.0)
