@@ -34,10 +34,10 @@ A first run of the container can help in the creation of the file, but feel free
 
 ```
 $ mkdir config
-$ docker run --rm -it -v $(pwd)/config:/config pfidr/rclone
+$ docker run --rm -it -v ~/.config/rclone:/config pfidr/rclone
 ```
 
-### Snippets code 
+### Snippets 
 
 ```
 docker create \
@@ -53,8 +53,9 @@ docker create \
  -e FORCE_SYNC=1 \
  -e CHECK_URL=https://hc-ping.com/6e5c1161-67a3-4c1c-8bb1-xxxxxxxxxx \
  --restart=unless-stopped \
-skywirex/rclone-scm:v0.1-arm64v8-latest
+skywirex/rclone-scm:<tag>
 ```
+`<tag>: v0.1-arm64v8-latest`
 
 ```
 docker start rclone-scm
